@@ -1,0 +1,9 @@
+/node_modules
+
+npm-debug.log
+desktop.ini
+
+# IntelliJ
+*.iml
+/.idea
+/img

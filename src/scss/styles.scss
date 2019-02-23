@@ -1,0 +1,260 @@
+@import '~foundation-sites/dist/css/foundation.min.css';
+@import '~slick-carousel/slick/slick.css';
+@import '~lightbox2/dist/css/lightbox.min.css';
+
+$breakpoints: (
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);
+/* MIXINS */
+
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+body{
+    background: #c2c2c2;
+}
+
+.no-back{
+    background:none;
+    margin-bottom: 0;
+    &:hover{
+        background:none;
+    }
+}
+
+.menu.mobile{
+    background: #232323;
+    .site-title{
+        color:white;
+        text-align: center;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        margin-top: 40px;
+        a{
+            color:white;
+        }
+    }
+}
+
+.slider {
+    width: 100%;
+    height: 60vh;
+    min-height: 400px;
+    margin: 0;
+    .slick-dots{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 0;
+        bottom: 2%;
+        left: 0;
+        margin: auto;
+        list-style: none;
+    }
+    .slick-dots li button {
+        cursor: pointer;
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        padding: 5px;
+        background: transparent;
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+        border: 2px solid white;
+        border-radius: 100%;
+        outline: none;
+    }
+    .slick-dots li.slick-active button {
+        cursor: pointer;
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        padding: 5px;
+        background: rgba(255,255,255,0.5);
+        color: transparent;
+        font-size: 0;
+        line-height: 0;
+        border: 2px solid white;
+        border-radius: 100%;
+        outline: none;
+    }
+
+    .slick-list{
+        height: 100%;
+    }
+    .slick-track{
+        height: 100%;
+    }
+    .slick-arrow{
+        cursor:pointer;
+        color: rgba(255, 255, 255, 0.42);
+        font-size: 3em;
+        transition: color 0.3s;
+        &:hover{
+            color: rgba(255, 255, 255, 1);
+            transition: color 0.3s;
+        }
+    }
+    .slick-prev{
+        position: absolute;
+        top: 45%;
+        left: 2%;
+        z-index: 10;
+       
+    }
+    .slick-next{
+        position: absolute;
+        top: 45%;
+        right: 2%;
+        z-index: 10;
+    }
+    .slide-item {     
+      position: relative;
+      height: 100%;
+      overflow:hidden;
+      .slide-title{
+        color: white;
+        font-family: sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        text-shadow: 0px 0px 7px black;
+        @include mq('tablet','max'){
+            font-size: 1.5em;
+        }
+      }
+      .slide-background{
+        position: absolute;
+        top: -50%;
+        right: 0;
+        bottom: -50%;
+        left: 0;
+        width: 100%;
+        margin: auto;
+        z-index: -1;
+        @include mq('tablet','max'){
+            transform:scale(1.8);
+        }
+      }
+    }
+    .slide-grid{
+        height: 100%;
+    }  
+  
+  }
+  
+  
+.header{
+    background:black;
+}
+#header-main{
+    background: black;
+    .site-title{
+        color:white;
+        font-weight: bold;
+        margin-bottom: 0;
+        margin-left: 15px;
+    }
+
+    .nav-link a{
+        color:white;
+    }
+}
+
+
+#home-section{
+    height: 36vh;    
+    min-height: 400px;
+    padding: 100px 0;
+    background:#151515;
+    color:white;
+}
+
+#text-only{
+    background: #1779ba;
+    .quote{
+        position:relative;
+        margin: 200px 0;
+        padding: 20px 35px;
+        color:#fff;       
+        font-size:1.5em;
+        border-top: 2px solid gainsboro;
+        border-bottom: 2px solid gainsboro;
+        @include mq('tablet','max'){
+            margin: 100px 0;
+        }
+        .quote-author{
+            display: block;
+            color: #ffffff96;
+            text-align: right;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+        &:before{
+            position: absolute;
+            top: 0;
+            left:0;
+            color: #ffffff96;
+            font-size: 3em;
+            content: '"';
+        }
+    }
+
+   
+}
+
+#gallery{
+    padding: 200px 0;
+    background: #151515;
+}
+
+#parallax-content{
+ 
+    .main-background-image{
+        padding: 200px 0;
+        background:url('http://sample1.kjhuer.com/img/parallax-img.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+    .main-content-text{
+        padding: 100px 0;
+    }
+    h2{
+        color:white;
+        font-weight: bold;
+        text-shadow: 0px 0px 4px black;
+    }
+}
+
+#footer{
+    padding: 50px 0;
+    background: #232323;
+    color:white;
+}
